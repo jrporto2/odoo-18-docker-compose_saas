@@ -1,7 +1,7 @@
 services:
   postgres:
     image: postgres:16
-    container_name: c_postgres
+    container_name: c_postgres_saas
     restart: unless-stopped
     environment:
       POSTGRES_USER: odoo
@@ -21,7 +21,7 @@ services:
 
   pgadmin:
     image: dpage/pgadmin4
-    container_name: c_pgadmin
+    container_name: c_pgadmin_saas
     restart: unless-stopped
     environment:
       PGADMIN_DEFAULT_EMAIL: admin@midominio.com
@@ -40,7 +40,7 @@ services:
 
   nginx:
     image: nginx:1.26.1
-    container_name: c_nginx
+    container_name: c_nginx_saas
     restart: unless-stopped
     ports:
       - "80:80"
