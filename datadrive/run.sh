@@ -13,5 +13,4 @@ rm -rf $DESTINATION/.git
 chmod +x $DESTINATION/datadrive/admin/scripts/create-client.sh
 # Run Odoo
 docker compose -f $DESTINATION/docker-compose.yml up -d
-
 echo "Odoo started at http://localhost:$PORT | Master Password: $MASTERPASSWORD | Live chat port: $CHAT"
