@@ -1,6 +1,7 @@
 #!/bin/bash
 set -x
 #curl -s https://raw.githubusercontent.com/jrporto2/odoo-18-docker-compose_saas/refs/heads/main/datadrive/run.sh | sudo bash -s odoo-saas 10017 20017 password
+#curl -fsSL https://raw.githubusercontent.com/jrporto2/odoo-18-docker-compose_saas/main/datadrive/run.sh | sudo bash -s odoo-saas 10017 20017 password
 DESTINATION=$1
 PORT=$2
 CHAT=$3
