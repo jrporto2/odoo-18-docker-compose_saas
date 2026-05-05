@@ -12,8 +12,6 @@ git clone --depth=1 https://github.com/jrporto2/odoo-18-docker-compose_saas.git 
 rm -rf $DESTINATION/.git
 
 chmod +x $DESTINATION/datadrive/admin/scripts/create-client.sh
-
-
 #mkdir -p $DESTINATION/datadrive/odoo/{addons,etc,filestore,logsx,sessions}
 #mkdir -p $DESTINATION/datadrive/nginx/{certs,conf.d,logs}
 #mkdir -p $DESTINATION/datadrive/postgres/{db,custom-init-scripts}
@@ -54,7 +52,6 @@ chmod +x $DESTINATION/datadrive/admin/scripts/create-client.sh
 #  sed -i 's/20017/'$CHAT'/g' $DESTINATION/.env
 #  sed -i 's/adminpasswd/'$MASTERPASSWORD'/g' $DESTINATION/datadrive/odoo/etc/odoo.conf 
 #fi
-
 # Set file and directory permissions after installation
 #find $DESTINATION -type f -exec chmod 644 {} \;
 #find $DESTINATION -type d -exec chmod 755 {} \;
