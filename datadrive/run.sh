@@ -12,5 +12,5 @@ git clone --depth=1 https://github.com/jrporto2/odoo-18-docker-compose_saas.git 
 rm -rf $DESTINATION/.git
 # chmod +x $DESTINATION/datadrive/admin/scripts/create-client.sh
 # Run Odoo
-docker compose -f $DESTINATION/core/docker-compose.yml up -d
+docker compose -f $DESTINATION/datadrive/core/docker-compose.yml up -d
 echo "Odoo started at http://localhost:$PORT | Master Password: $MASTERPASSWORD | Live chat port: $CHAT"
