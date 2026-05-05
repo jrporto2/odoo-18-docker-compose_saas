@@ -1,1 +1,25 @@
-.
+services:
+  odoo:
+    image: odoo:18
+    container_name: c_odoo_CLIENT_NAME
+    restart: unless-stopped
+    environment:
+      - TZ=America/Lima
+      - LANG=es_PE.UTF-8
+      - HOST=postgres
+      - USER=odoo
+      - PASSWORD=odoo_pass
+      - DB_NAME=CLIENT_NAME
+      - LOGFILE=/dev/stdout
+    volumes:
+      - ./addons:/mnt/extra-addons
+      - ./filestore:/var/lib/odoo
+      - ./sessions:/var/lib/odoo/sessions
+      - ./logs:/var/log/odoo
+      - ./odoo.conf:/etc/odoo/odoo.conf:ro
+    networks:
+      - internal_net
+
+networks:
+  internal_net:
+    external: true
