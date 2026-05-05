@@ -11,7 +11,7 @@ rm -rf $DESTINATION
 git clone --depth=1 https://github.com/jrporto2/odoo-18-docker-compose_saas.git $DESTINATION
 rm -rf $DESTINATION/.git
 
-#chmod +x /opt/odoo-saas/admin/scripts/create-client.sh
+chmod +x $DESTINATION/datadrive/admin/scripts/create-client.sh
 
 
 #mkdir -p $DESTINATION/datadrive/odoo/{addons,etc,filestore,logsx,sessions}
