@@ -40,7 +40,11 @@ docker exec c_odoo_"$CLIENT" odoo \
   --without-demo=all \
   --stop-after-init
 
- 
+sudo scp /etc/ssl/certs/origin_certificate.pem $DESTINATION/datadrive/nginx/certs/$CLIENT.multipath.net.pe.crt
+sudo scp /etc/ssl/certs/origin_private_key.pem $DESTINATION/datadrive/nginx/certs/$CLIENT.multipath.net.pe.key
+sudo chmod 600 $DESTINATION/datadrive/nginx/certs/*.key
+sudo chmod 644 $DESTINATION/datadrive/nginx/certs/*.crt
+
 
 # 6. Crear config NGINX
 cat > "$NGINX_DIR/conf.d/$CLIENT.conf" <<EOF
