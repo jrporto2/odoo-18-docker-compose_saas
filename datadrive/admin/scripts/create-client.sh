@@ -43,15 +43,21 @@ docker exec c_odoo_"$CLIENT" odoo \
  
 
 # 6. Crear config NGINX
-cat > "$NGINX_DIR/$CLIENT.conf" <<EOF
-server {
-    server_name $CLIENT.midominio.com;
+cat > "$NGINX_DIR/conf.d/$CLIENT.conf" <<EOF
+server {  
+    listen 443 ssl;
+    server_name $CLIENT.multipath.net.pe;
+    ssl_certificate     /etc/nginx/ssl/$CLIENT.multipath.net.pe.crt;
+    ssl_certificate_key /etc/nginx/ssl/$CLIENT.multipath.net.pe.key;
+    ssl_protocols TLSv1.2 TLSv1.3;
+    ssl_prefer_server_ciphers off;
 
     location / {
         proxy_pass http://c_odoo_$CLIENT:8069;
         proxy_set_header Host \$host;
         proxy_set_header X-Forwarded-Proto \$scheme;
         proxy_set_header X-Forwarded-For \$proxy_add_x_forwarded_for;
+        proxy_set_header X-Real-IP $remote_addr;
     }
 }
 EOF
