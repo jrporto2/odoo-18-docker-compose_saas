@@ -1,6 +1,7 @@
 services:
   odoo:
     image: odoo:18
+    user: "100:101"
     container_name: c_odoo_CLIENT_NAME
     restart: unless-stopped
     environment:
