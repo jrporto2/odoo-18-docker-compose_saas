@@ -12,7 +12,7 @@ BASE="DESTINATION/datadrive/clients"
 TEMPLATE="DESTINATION/datadrive/templates/client"
 NGINX_DIR="DESTINATION/datadrive/nginx"
 
-echo "➡️ Creando cliente: $CLIENT"
+echo "➡️ Creando cliente SaaS: $CLIENT"
 
 # 1. Crear estructura
 mkdir -p "$BASE/$CLIENT"
@@ -25,17 +25,21 @@ sed -i "s/CLIENT_NAME/$CLIENT/g" \
 # 3. Crear base de datos e inicializar Odoo
 docker exec c_postgres createdb -U odoo "$CLIENT"
 
-docker exec c_odoo \
-  odoo \
+#  4. Levantar contenedor Odoo del cliente
+docker compose -f "$BASE/$CLIENT/docker-compose.yml" up -d
+echo "⏳ Esperando a que el contenedor arranque..."
+sleep 10
+#  5 .Inicializar base de datos
+
+docker exec c_odoo_"$CLIENT" odoo \
   -d "$CLIENT" \
   -i base \
   --without-demo=all \
   --stop-after-init
 
-# 4. Levantar contenedor del cliente
-docker compose -f "$BASE/$CLIENT/docker-compose.yml" up -d
+ 
 
-# 5. Crear config NGINX
+# 6. Crear config NGINX
 cat > "$NGINX_DIR/$CLIENT.conf" <<EOF
 server {
     server_name $CLIENT.midominio.com;
@@ -52,4 +56,4 @@ EOF
 # 6. Recargar NGINX
 docker restart c_nginx
 
-echo "✅ Cliente $CLIENT creado correctamente"
+echo "✅ Cliente SaaS $CLIENT creado correctamente"
