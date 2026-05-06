@@ -1,6 +1,6 @@
 #!/bin/bash
+set -x
 set -e
-
 CLIENT="$1"
 
 if [[ ! "$CLIENT" =~ ^[a-z0-9_]{3,20}$ ]]; then
@@ -17,6 +17,9 @@ echo "➡️ Creando cliente SaaS: $CLIENT"
 # 1. Crear estructura
 mkdir -p "$BASE/$CLIENT"
 cp -r "$TEMPLATE/"* "$BASE/$CLIENT/"
+
+chown -R 100:101 "$BASE/$CLIENT"
+chmod -R 755 "$BASE/$CLIENT"
 
 # 2. Reemplazar placeholders
 sed -i "s/CLIENT_NAME/$CLIENT/g" \
