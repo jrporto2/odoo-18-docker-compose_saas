@@ -8,9 +8,9 @@ if [[ ! "$CLIENT" =~ ^[a-z0-9_]{3,20}$ ]]; then
   exit 1
 fi
 
-BASE="/opt/odoo-saas/clients"
-TEMPLATE="/opt/odoo-saas/templates/client"
-NGINX_DIR="/opt/odoo-saas/nginx"
+BASE="DESTINATION/datadrive/clients"
+TEMPLATE="DESTINATION/datadrive/templates/client"
+NGINX_DIR="DESTINATION/datadrive/nginx"
 
 echo "➡️ Creando cliente: $CLIENT"
 
