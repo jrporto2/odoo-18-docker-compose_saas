@@ -11,7 +11,8 @@ services:
       - USER=odoo
       - PASSWORD=odoo_pass
       - DB_NAME=CLIENT_NAME
-      - LOGFILE=/dev/stdout
+      - logfile = /var/log/odoo/odoo.log
+      - log_level = info
     volumes:
       - ./addons:/mnt/extra-addons
       - ./filestore:/var/lib/odoo
