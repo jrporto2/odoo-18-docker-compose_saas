@@ -8,10 +8,13 @@ services:
       - TZ=America/Lima
       - LANG=es_PE.UTF-8
       - HOST=postgres
-      - USER=odoo
-      - PASSWORD=odoo_pass
+      - USER=${DB_USER}
+      - PASSWORD=${DB_PASSWORD}
       - DB_NAME=CLIENT_NAME
+      - FILESTORE_PATH=/var/lib/odoo/filestore
     volumes:
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
       - ./addons:/mnt/extra-addons
       - ./filestore:/var/lib/odoo
       - ./sessions:/var/lib/odoo/sessions
