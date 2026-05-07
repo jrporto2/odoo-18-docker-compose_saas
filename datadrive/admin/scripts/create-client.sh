@@ -42,27 +42,26 @@ docker exec c_odoo_"$CLIENT" odoo \
   --stop-after-init
 
 # 6. Crear config NGINX
-cat > "$NGINX_DIR/conf.d/$CLIENT.conf" <<EOF
+cat > "$NGINX_DIR/conf.d/$CLIENT.conf" <<'EOF'
 # HTTP -> HTTPS
 server {
     listen 80;
-    server_name  $CLIENT.multipath.net.pe;
+    server_name  CLIENT.multipath.net.pe;
     return 301 https://$host$request_uri;
 }
 
 # HTTPS
 server {
     listen 443 ssl;
-    server_name $CLIENT.multipath.net.pe;
+    server_name CLIENT.multipath.net.pe;
 
-    ssl_certificate     /etc/nginx/ssl/$CLIENT.multipath.net.pe.crt;
-    ssl_certificate_key /etc/nginx/ssl/$CLIENT.multipath.net.pe.key;
+    ssl_certificate     /etc/nginx/ssl/CLIENT.multipath.net.pe.crt;
+    ssl_certificate_key /etc/nginx/ssl/CLIENT.multipath.net.pe.key;
 
     ssl_protocols TLSv1.2 TLSv1.3;
 
     location / {
-        proxy_pass http://c_odoo_$CLIENT:8069;
-
+        proxy_pass http://c_odoo_CLIENT:8069;
         proxy_set_header Host $host;
         proxy_set_header X-Forwarded-Proto https;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
@@ -71,6 +70,7 @@ server {
 }
 
 EOF
+sed -i "s/CLIENT/$CLIENT/g" "$NGINX_DIR/conf.d/$CLIENT.conf"
 sudo scp /etc/ssl/certs/origin_certificate.pem DESTINATION/datadrive/nginx/certs/$CLIENT.multipath.net.pe.crt
 sudo scp /etc/ssl/certs/origin_private_key.pem DESTINATION/datadrive/nginx/certs/$CLIENT.multipath.net.pe.key
 sudo chmod 600 DESTINATION/datadrive/nginx/certs/*.key
