@@ -1,7 +1,7 @@
 services:
   postgres:
     image: postgres:16
-    container_name: c_postgres
+    container_name: c_pgsaas
     restart: unless-stopped
     environment:
       - POSTGRES_USER=${DB_USER}
@@ -42,7 +42,7 @@ services:
 
   nginx:
     image: nginx:1.26.1
-    container_name: c_nginx
+    container_name: c_nginxsaas
     restart: unless-stopped
     ports:
       - "80:80"
