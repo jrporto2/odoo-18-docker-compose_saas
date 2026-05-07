@@ -26,7 +26,7 @@ sed -i "s/CLIENT_NAME/$CLIENT/g" \
   "$BASE/$CLIENT/docker-compose.yml"
   
 # 3. Crear base de datos e inicializar Odoo
-docker exec c_postgres_saas createdb -U odoo "$CLIENT"
+docker exec c_pgsaas createdb -U odoo "$CLIENT"
 
 #  4. Levantar contenedor Odoo del cliente
 docker compose -f "$BASE/$CLIENT/docker-compose.yml" up -d
@@ -76,6 +76,6 @@ sudo scp /etc/ssl/certs/origin_private_key.pem DESTINATION/datadrive/nginx/certs
 sudo chmod 600 DESTINATION/datadrive/nginx/certs/*.key
 sudo chmod 644 DESTINATION/datadrive/nginx/certs/*.crt
 # 6. Recargar NGINX
-docker restart c_nginx_saas
+docker restart c_nginxsaas
 
 echo "✅ Cliente SaaS $CLIENT creado correctamente"
