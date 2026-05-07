@@ -25,10 +25,6 @@ services:
     container_name: c_pgadmin
     restart: unless-stopped
     environment:
-      PGADMIN_DEFAULT_EMAIL: admin@midominio.com
-      PGADMIN_DEFAULT_PASSWORD: CAMBIAR_PASSWORD
-      PGADMIN_LISTEN_PORT: 5050
-    environment:
       - PGADMIN_DEFAULT_EMAIL=${PGADMIN_EMAIL}
       - PGADMIN_DEFAULT_PASSWORD=${PGADMIN_PASSWORD}
       - PGADMIN_CONFIG_WTF_CSRF_ENABLED=False
