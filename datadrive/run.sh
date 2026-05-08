@@ -20,5 +20,7 @@ sed -i 's|DESTINATION|'$BASE/$DESTINATION'|g' $DESTINATION/datadrive/admin/scrip
 sudo chmod -R 750 $DESTINATION/datadrive/admin/scripts/create-client.sh
 sudo chown -R 5050:5050 $DESTINATION/datadrive/pgadmin
 sudo chmod -R 700 $DESTINATION/datadrive//pgadmin
+cd ~/odoo-saas/datadrive/templates
+sudo ln ~/odoo-saas/datadrive/core/.env .env
 
 
