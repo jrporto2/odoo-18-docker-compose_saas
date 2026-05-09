@@ -13,7 +13,7 @@ rm -rf $DESTINATION
 git clone --depth=1 https://github.com/jrporto2/odoo-18-docker-compose_saas.git $DESTINATION
 rm -rf $DESTINATION/.git
 sudo chown -R 5050:5050 $DESTINATION/datadrive/pgadmin
-sudo chmod -R 700 $DESTINATION/datadrive/pgadmin
+sudo chmod -R 755  $DESTINATION/datadrive/pgadmin
 sudo scp /etc/ssl/certs/origin_certificate.pem $DESTINATION/datadrive/nginx/certs/pgadmin.multipath.net.pe.crt
 sudo scp /etc/ssl/certs/origin_private_key.pem $DESTINATION/datadrive/nginx/certs/pgadmin.multipath.net.pe.key
 # chmod +x $DESTINATION/datadrive/admin/scripts/create-client.sh
