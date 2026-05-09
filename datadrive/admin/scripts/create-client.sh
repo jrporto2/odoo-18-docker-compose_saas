@@ -24,7 +24,8 @@ chmod -R 755 "$BASE/$CLIENT"
 # 2. Reemplazar placeholders
 sed -i "s/CLIENT_NAME/$CLIENT/g" \
   "$BASE/$CLIENT/docker-compose.yml"
-  
+sed -i "s/CLIENT_NAME/$CLIENT/g" \
+  "$BASE/$CLIENT/odoo.conf"
 # 3. Crear base de datos e inicializar Odoo
 docker exec c_pgsaas createdb -U odoo "$CLIENT"
 
