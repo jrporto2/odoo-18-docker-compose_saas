@@ -60,9 +60,10 @@ server {
     ssl_certificate_key /etc/nginx/ssl/CLIENT.multipath.net.pe.key;
 
     ssl_protocols TLSv1.2 TLSv1.3;
-
+    resolver 127.0.0.11 valid=30s;
+    set $upstream c_odoo_CLIENT;
     location / {
-        proxy_pass http://c_odoo_CLIENT:8069;
+        proxy_pass http://$upstream:8069;
         proxy_set_header Host $host;
         proxy_set_header X-Forwarded-Proto https;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
