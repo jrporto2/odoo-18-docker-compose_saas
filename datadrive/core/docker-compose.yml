@@ -31,7 +31,7 @@ services:
       - PGADMIN_LISTEN_PORT=5050
       - SCRIPT_NAME=/pgadmin
     volumes:
-      - ./pgadmin:/var/lib/pgadmin
+      - ../pgadmin:/var/lib/pgadmin
     depends_on:
       postgres:
         condition: service_healthy
