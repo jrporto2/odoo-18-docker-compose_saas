@@ -20,6 +20,6 @@ docker compose -f $DESTINATION/datadrive/core/docker-compose.yml up -d
 echo "Odoo started at http://localhost:$PORT | Master Password: $MASTERPASSWORD | Live chat port: $CHAT"
 sed -i 's|DESTINATION|'$BASE/$DESTINATION'|g' $DESTINATION/datadrive/admin/scripts/create-client.sh 
 sudo chmod -R 750 $DESTINATION/datadrive/admin/scripts/create-client.sh
-$DESTINATION/datadrive/admin/scripts/create-client.sh erpdemo
+$DESTINATION/datadrive/admin/scripts/create-client.sh erp
 
 
