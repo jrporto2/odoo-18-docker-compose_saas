@@ -17,7 +17,7 @@ echo "➡️ Creando cliente SaaS: $CLIENT"
 # 1. Crear estructura
 mkdir -p "$BASE/$CLIENT"
 cp -r "$TEMPLATE/"* "$BASE/$CLIENT/"
-
+ln -s ~/odoo-saas/datadrive/core/.env "$BASE/$CLIENT"/.env
 chown -R 100:101 "$BASE/$CLIENT"
 chmod -R 755 "$BASE/$CLIENT"
 
