@@ -38,7 +38,7 @@ services:
     networks:
       - internal_net
     ports:
-      - "0.0.0.0:5050:5050"
+      - "5050:5050"
 
   nginx:
     image: nginx:1.26.1
