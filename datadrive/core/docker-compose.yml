@@ -64,9 +64,4 @@ networks:
   public_net:
     name: public_net
     driver: bridge
- 
-logging:
-  driver: "json-file"
-  options:
-    max-size: "10m"
-    max-file: "3"
+
