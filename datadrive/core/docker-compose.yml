@@ -32,7 +32,9 @@ services:
       - PGADMIN_CONFIG_SERVER_MODE=True
       - PGADMIN_CONFIG_MASTER_PASSWORD_REQUIRED=False
       - PGADMIN_CONFIG_UPGRADE_CHECK_ENABLED=False
+      - PGADMIN_CONFIG_ENHANCED_COOKIE_PROTECTION=False
       # Configuraciones para proxy inverso
+      - PGADMIN_CONFIG_REVERSE_PROXY=True
       - PGADMIN_CONFIG_LOGIN_BANNER="Accesso autorizado solamente"
       - PGADMIN_CONFIG_CONSOLE_LOG_LEVEL=10  # Debug
     networks:
