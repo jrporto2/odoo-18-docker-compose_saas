@@ -18,9 +18,14 @@ echo "➡️ Creando cliente SaaS: $CLIENT"
 mkdir -p "$BASE/$CLIENT"
 cp -r "$TEMPLATE/"* "$BASE/$CLIENT/"
 ln -s ~/odoo-saas/datadrive/core/.env "$BASE/$CLIENT"/.env
-chown -R 100:101 "$BASE/$CLIENT"
-chmod -R 755 "$BASE/$CLIENT"
-
+chown  100:101 "$BASE/$CLIENT/data/"
+chown  100:101 "$BASE/$CLIENT/data/filestore/"
+chown  100:101 "$BASE/$CLIENT/addons/"
+chown  100:101 "$BASE/$CLIENT/logs/"
+chmod  755 "$BASE/$CLIENT/data/"
+chmod  755 "$BASE/$CLIENT/data/filestore/"
+chmod  755 "$BASE/$CLIENT/addons/"
+chmod  755 "$BASE/$CLIENT/logs/"
 # 2. Reemplazar placeholders
 sed -i "s/CLIENT_NAME/$CLIENT/g" \
   "$BASE/$CLIENT/docker-compose.yml"
