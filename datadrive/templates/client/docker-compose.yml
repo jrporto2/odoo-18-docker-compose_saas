@@ -11,13 +11,11 @@ services:
       - USER=${DB_USER}
       - PASSWORD=${DB_PASSWORD}
       - DB_NAME=CLIENT_NAME
-      - FILESTORE_PATH=/var/lib/odoo/filestore
     volumes:
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
       - ./addons:/mnt/extra-addons
-      - ./filestore:/var/lib/odoo
-      - ./sessions:/var/lib/odoo/sessions
+      - ./data:/var/lib/odoo
       - ./logs:/var/log/odoo
       - ./odoo.conf:/etc/odoo/odoo.conf:ro
     networks:
